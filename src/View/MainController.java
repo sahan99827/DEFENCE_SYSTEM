@@ -1,7 +1,8 @@
 package View;
 
 import controller.DifeanceObservable;
-
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -17,10 +18,19 @@ public class MainController extends javax.swing.JFrame {
      * Creates new form MainController
      */
     public MainController(DifeanceObservable Observable) {
-        setVisible(true);
+       
         this.Observable=Observable;
         initComponents();
+        
+       sliderPosition.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                Observable.setSliderValueInBtn(sliderPosition.getValue());
+            }
+        });
 
+         setVisible(true);
+        
     }
 
     /**
@@ -211,7 +221,6 @@ public class MainController extends javax.swing.JFrame {
 
     private void sliderPositionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_sliderPositionAncestorAdded
         // TODO add your handling code here:
-          Observable.setSliderValueInBtn(sliderPosition.getValue());
     }//GEN-LAST:event_sliderPositionAncestorAdded
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed

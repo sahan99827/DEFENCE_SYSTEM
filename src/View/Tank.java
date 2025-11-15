@@ -2,6 +2,9 @@ package View;
 
 import interfaces.Observer;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -25,9 +28,16 @@ public class Tank extends javax.swing.JFrame implements Observer {
         btnRedar.setEnabled(false);
         btnMissile.setEnabled(false);
         btnShhot.setEnabled(false);
-         display.setText(jSlider1.getValue()+"");
+        
         spiSolder.setValue(500);
         spiAmmo.setValue(200);
+        
+        jSlider1.addChangeListener(new ChangeListener() {
+           @Override
+           public void stateChanged(ChangeEvent e) {
+               setSlider(jSlider1.getValue());
+           }
+       });
 
     }
 
@@ -163,7 +173,9 @@ public class Tank extends javax.swing.JFrame implements Observer {
             }
         });
         getContentPane().add(btnRedar, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 185, 145, 44));
-        getContentPane().add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, -1, 70));
+
+        display.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        getContentPane().add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 80, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,10 +186,26 @@ public class Tank extends javax.swing.JFrame implements Observer {
 
     private void btnShhotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShhotActionPerformed
         // TODO add your handling code here:
+         if ((int) spiAmmo.getValue() != 0) {
+            spiAmmo.setValue((int) spiAmmo.getValue() - 2);
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "⚠️ Out of Ammo! Refill required to continue combat operations\n                             Do You Want to Refill", "Warning", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                spiAmmo.setValue(200);
+            }
+        }
     }//GEN-LAST:event_btnShhotActionPerformed
 
     private void btnMissileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMissileActionPerformed
         // TODO add your handling code here:
+        if ((int) spiSolder.getValue() != 0) {
+            spiSolder.setValue((int) spiSolder.getValue() - 2);
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "⚠️ Out of Ammo! Refill required to continue combat operations\n                             Do You Want to Refill", "Warning", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                spiSolder.setValue(200);
+            }
+        }
     }//GEN-LAST:event_btnMissileActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
@@ -216,10 +244,11 @@ public class Tank extends javax.swing.JFrame implements Observer {
     }
     @Override
     public void setBtnValue(int value){
+        
         if(chbPesition.isSelected()){
             if(value>20){
                 btnShhot.setEnabled(true);
-                btnShhot.setBackground( Color.GREEN);
+                btnShhot.setBackground(Color.GREEN);
             }else{
                 btnShhot.setEnabled(false);
                 btnShhot.setBackground(new Color(102,102,255));

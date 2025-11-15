@@ -3,7 +3,7 @@ package View;
 import interfaces.Observer;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-
+import javax.swing.event.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -27,10 +27,16 @@ public class Helicopter extends javax.swing.JFrame implements Observer{
         btnLeser.setEnabled(false);        
         btnMissile.setEnabled(false);
         btnShhot.setEnabled(false);
-        
-        
+              
         spiSolder.setValue(80);
         spiAmmo.setValue(200);
+        
+            jSlider1.addChangeListener(new ChangeListener() {
+           @Override
+           public void stateChanged(ChangeEvent e) {
+               setSlider(jSlider1.getValue());
+           }
+       });
     }
 
     /**
@@ -154,7 +160,9 @@ public class Helicopter extends javax.swing.JFrame implements Observer{
             }
         });
         getContentPane().add(chbPesition, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 137, -1, -1));
-        getContentPane().add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, -1, 60));
+
+        display.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        getContentPane().add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 40, 70, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,7 +183,7 @@ public class Helicopter extends javax.swing.JFrame implements Observer{
             }
         }
     }//GEN-LAST:event_btnShhotActionPerformed
-
+     
     private void btnMissileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMissileActionPerformed
         // TODO add your handling code here:
         if ((int) spiSolder.getValue() != 0) {
@@ -203,7 +211,8 @@ public class Helicopter extends javax.swing.JFrame implements Observer{
 
     private void jSlider1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jSlider1AncestorAdded
         // TODO add your handling code here:
-           setSlider(jSlider1.getValue());
+        
+             
     }//GEN-LAST:event_jSlider1AncestorAdded
    
     public void setSlider(int value){

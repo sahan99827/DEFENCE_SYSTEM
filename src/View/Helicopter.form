@@ -223,9 +223,14 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="display">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="1"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="710" y="40" width="-1" height="60"/>
+          <AbsoluteConstraints x="710" y="40" width="70" height="60"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -104,7 +104,7 @@ public class Submarine extends javax.swing.JFrame implements Observer{
 
         btnMissile.setBackground(new java.awt.Color(102, 102, 255));
         btnMissile.setForeground(new java.awt.Color(255, 255, 255));
-        btnMissile.setText("Missile Operation");
+        btnMissile.setText("soner Operation");
         btnMissile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMissileActionPerformed(evt);
@@ -195,10 +195,26 @@ public class Submarine extends javax.swing.JFrame implements Observer{
 
     private void btnShhotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShhotActionPerformed
         // TODO add your handling code here:
+         if ((int) spiAmmo.getValue() != 0) {
+            spiAmmo.setValue((int) spiAmmo.getValue() - 2);
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "⚠️ Out of Ammo! Refill required to continue combat operations\n                             Do You Want to Refill", "Warning", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                spiAmmo.setValue(200);
+            }
+        }
     }//GEN-LAST:event_btnShhotActionPerformed
 
     private void btnMissileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMissileActionPerformed
         // TODO add your handling code here:
+          if ((int) spiSolder.getValue() != 0) {
+            spiSolder.setValue((int) spiSolder.getValue() - 2);
+        } else {
+            int choice = JOptionPane.showConfirmDialog(this, "⚠️ Out of Ammo! Refill required to continue combat operations\n                             Do You Want to Refill", "Warning", JOptionPane.YES_NO_OPTION);
+            if (choice == JOptionPane.YES_OPTION) {
+                spiSolder.setValue(200);
+            }
+        }
     }//GEN-LAST:event_btnMissileActionPerformed
 
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
