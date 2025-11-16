@@ -196,7 +196,7 @@ public class MainController extends javax.swing.JFrame {
         sendTextArea.setRows(5);
         jScrollPane4.setViewportView(sendTextArea);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(534, 106, 296, 143));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 296, 143));
 
         jLabel6.setText("Helicopter");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 654, -1, -1));
@@ -229,9 +229,9 @@ public class MainController extends javax.swing.JFrame {
             if(cmbDefence.getSelectedIndex()==1){
                Observable.setPrivateMsg1("Main Controller : "+sendTextArea.getText());
             }else if(cmbDefence.getSelectedIndex()==2){
-               Observable.setPrivateMsg2("Main Controller : "+sendTextArea.getText());
-            }else if(cmbDefence.getSelectedIndex()==3){
                Observable.setPrivateMsg3("Main Controller : "+sendTextArea.getText());
+            }else if(cmbDefence.getSelectedIndex()==3){
+               Observable.setPrivateMsg2("Main Controller : "+sendTextArea.getText());
             }
        }else{
            Observable.setMsgPublic("Main Controller : "+sendTextArea.getText());

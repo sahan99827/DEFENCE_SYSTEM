@@ -345,7 +345,7 @@ public class Submarine extends javax.swing.JFrame implements Observer{
         txtMassege.setText(massage);
     }
     @Override
-    public void setprivateMassage(String massage){}
+    public void setprivateMassage(String massage){   txtMassege.setText(massage);}
     /**
      * @param args the command line arguments
      */
